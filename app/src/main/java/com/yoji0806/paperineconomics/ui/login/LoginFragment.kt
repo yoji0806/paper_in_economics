@@ -1,25 +1,30 @@
-package com.yoji0806.paperineconomics
+package com.yoji0806.paperineconomics.ui.login
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.FirebaseAuth
-import com.yoji0806.paperineconomics.databinding.ActivityLoginBinding
+import com.yoji0806.paperineconomics.databinding.FragmentHomeBinding
+import com.yoji0806.paperineconomics.databinding.FragmentLoginBinding
 
 
-//TODO: downsize image file -> change to xml file or downgrade.
+private const val TAG = "LoginFragment"
 
-private const val TAG = "LoginActivity"
+class LoginFragment : Fragment() {
 
+    private var _binding : FragmentLoginBinding? = null
 
-class LoginActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityLoginBinding
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     private val signInLauncher = registerForActivityResult(
         FirebaseAuthUIActivityResultContract()
@@ -31,28 +36,42 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    }
 
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        //TODO viewModel needed ?
+
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         binding.buttonGoogleLogin.setOnClickListener {
             createSignInIntent()
         }
+
+        return binding.root
     }
 
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
         val durationShort = Toast.LENGTH_SHORT
         val response = result.idpResponse
 
-        if (result.resultCode == RESULT_OK) {
+        if (result.resultCode == AppCompatActivity.RESULT_OK) {
             //Successfully signed in
             Log.d(TAG, "[debug]: FirebaseAuthentication succeed!")
             Log.d(TAG, "[debug]: response: " + response.toString())
 
-            Toast.makeText(applicationContext, "Login Succeeded!", durationShort)
+            Toast.makeText(requireContext(), "Login Succeeded!", durationShort)
                 .show()
 
             val user = FirebaseAuth.getInstance().currentUser
@@ -66,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
         } else {
             //Sign in failed. If response is null the user canceled the sign-in flow using the back button. Otherwise check response.getError().getErrorCode() and handle the error.
             Log.d(TAG, "[debug]: FirebaseAuthentication failed!")
-            Toast.makeText(applicationContext, "Login failed", durationShort)
+            Toast.makeText(requireContext(), "Login failed", durationShort)
                 .show()
         }
     }
@@ -89,9 +108,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun signOut() {
         AuthUI.getInstance()
-            .signOut(this)
+            .signOut(requireContext())
             .addOnCompleteListener {
                 // TODO: sign out implementation.
             }
     }
+
 }
