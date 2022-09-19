@@ -44,8 +44,6 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //TODO viewModel needed ?
-
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         binding.buttonGoogleLogin.setOnClickListener {
@@ -75,15 +73,15 @@ class LoginFragment : Fragment() {
                 .show()
 
             val email = response?.email.toString()
-            val action = LoginFragmentDirections.actionLoginFragmentToNavHome(email)
+            val profileImageUrl = FirebaseAuth.getInstance().currentUser?.photoUrl.toString()
+
+            val action = LoginFragmentDirections.actionLoginFragmentToNavHome(emailAddress = email, imageUrl = profileImageUrl)
             findNavController().navigate(action)
 
             //TODO: implement this method if needed
-            //val user = FirebaseAuth.getInstance().currentUser
             //updateUI(currentUser)
 
             //TODO: save user info in local DB
-
 
         } else {
             //Sign in failed. If response is null the user canceled the sign-in flow using the back button. Otherwise check response.getError().getErrorCode() and handle the error.

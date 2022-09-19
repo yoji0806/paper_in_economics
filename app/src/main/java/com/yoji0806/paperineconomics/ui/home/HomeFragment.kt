@@ -1,16 +1,22 @@
 package com.yoji0806.paperineconomics.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.google.android.material.navigation.NavigationView
 import com.yoji0806.paperineconomics.R
 import com.yoji0806.paperineconomics.databinding.FragmentHomeBinding
+
+private const val TAG = "HomeFragment"
 
 class HomeFragment : Fragment() {
 
@@ -44,6 +50,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val email = args.emailAddress
+        val imageUrl = args.imageUrl
+            .toUri().buildUpon().scheme("https").build()
 
         //TODO: replace with data binding after implementing User viewModel
 
@@ -52,7 +60,10 @@ class HomeFragment : Fragment() {
             .findViewById<NavigationView>(R.id.nav_view).getHeaderView(0)
 
         val emailTextView = navHeader.findViewById<TextView>(R.id.menuTextEmail)
+        val profileImageView = navHeader.findViewById<ImageView>(R.id.profileImage)
+
         emailTextView.text = email
+        profileImageView.load(imageUrl)
     }
 
 

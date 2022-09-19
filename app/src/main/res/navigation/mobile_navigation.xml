@@ -20,6 +20,9 @@
             android:name="emailAddress"
             app:argType="string"
             android:defaultValue="no e-mail address found" />
+        <argument
+            android:name="imageUrl"
+            app:argType="string" />
     </fragment>
 
     <fragment
