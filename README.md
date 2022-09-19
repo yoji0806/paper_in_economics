@@ -7,7 +7,7 @@
 # Paper in Economics
 Android App to meet a new and fascinating paper, article, and data in economics.
 
-<p align="center">
+<p align="left">
   <img width="600" height="400" src="/images_for_doc/layout_image.jpg">
 </p>
 
