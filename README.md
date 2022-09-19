@@ -42,7 +42,7 @@ If you add UI, please make it Fragment.
 
 
 <p align="left">
-  <img width="600" height="400" src="/images_for_doc/architecture_layout_file_diagram.jpg">
+  <img width="500" height="300" src="/images_for_doc/architecture_layout_file_diagram.jpg">
 </p>
 
 ## Branching Strategy
