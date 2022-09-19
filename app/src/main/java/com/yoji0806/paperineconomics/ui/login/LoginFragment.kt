@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.FirebaseAuth
-import com.yoji0806.paperineconomics.databinding.FragmentHomeBinding
 import com.yoji0806.paperineconomics.databinding.FragmentLoginBinding
 
 
@@ -43,7 +43,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         //TODO viewModel needed ?
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
@@ -74,9 +74,12 @@ class LoginFragment : Fragment() {
             Toast.makeText(requireContext(), "Login Succeeded!", durationShort)
                 .show()
 
-            val user = FirebaseAuth.getInstance().currentUser
+            val email = response?.email.toString()
+            val action = LoginFragmentDirections.actionLoginFragmentToNavHome(email)
+            findNavController().navigate(action)
 
             //TODO: implement this method if needed
+            //val user = FirebaseAuth.getInstance().currentUser
             //updateUI(currentUser)
 
             //TODO: save user info in local DB
