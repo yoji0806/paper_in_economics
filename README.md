@@ -7,7 +7,7 @@
 # Paper in Economics
 Android App to meet a new and fascinating paper, article, and data in economics.
 
-<p align="center">
+<p align="left">
   <img width="500" height="300" src="/images_for_doc/layout_image.jpg">
 </p>
 
@@ -17,7 +17,6 @@ Android App to meet a new and fascinating paper, article, and data in economics.
 Twitter is for floating information, and an AI algorithm is implemented for user engagement, making it hard to find related content and consume content thoroughly.
 
 
-<br/><br/>
 <br/><br/>
 
 # for Developer
@@ -31,7 +30,7 @@ There is another repository for the scraping script.
 [Github:[Python]: paper_scraper](https://github.com/yoji0806/paper_scraper)
 
 
-<p align="center">
+<p align="left">
   <img width="500" height="300" src="/images_for_doc/architecture_overview.jpg">
 </p>
 
@@ -42,7 +41,7 @@ We use Navigation Drawer and Fragment component.
 If you add UI, please make it Fragment.
 
 
-<p align="center">
+<p align="left">
   <img width="500" height="300" src="/images_for_doc/architecture_layout_file_diagram.jpg">
 </p>
 
@@ -70,6 +69,6 @@ ex:
 
 This style help reviewers understand the context more deeply, like below.
 
-<p align="center">
+<p align="left">
   <img width="660" height="300" src="/images_for_doc/comment_style_from_reviewers_view.jpg">
 </p>
