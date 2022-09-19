@@ -73,9 +73,12 @@ class LoginFragment : Fragment() {
                 .show()
 
             val email = response?.email.toString()
-            val profileImageUrl = FirebaseAuth.getInstance().currentUser?.photoUrl.toString()
+            val currentUser = FirebaseAuth.getInstance().currentUser
 
-            val action = LoginFragmentDirections.actionLoginFragmentToNavHome(emailAddress = email, imageUrl = profileImageUrl)
+            val profileImageUrl = currentUser?.photoUrl.toString()
+            val userName = currentUser?.displayName.toString()
+
+            val action = LoginFragmentDirections.actionLoginFragmentToNavHome(emailAddress = email, imageUrl = profileImageUrl, userName = userName)
             findNavController().navigate(action)
 
             //TODO: implement this method if needed

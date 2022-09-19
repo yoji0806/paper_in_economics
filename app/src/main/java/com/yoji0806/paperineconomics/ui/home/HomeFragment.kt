@@ -1,7 +1,6 @@
 package com.yoji0806.paperineconomics.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +48,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val userName = args.userName
         val email = args.emailAddress
         val imageUrl = args.imageUrl
             .toUri().buildUpon().scheme("https").build()
@@ -59,9 +59,11 @@ class HomeFragment : Fragment() {
         val navHeader = requireActivity()   //get reference
             .findViewById<NavigationView>(R.id.nav_view).getHeaderView(0)
 
+        val userNameTextView = navHeader.findViewById<TextView>(R.id.menuTextUserName)
         val emailTextView = navHeader.findViewById<TextView>(R.id.menuTextEmail)
         val profileImageView = navHeader.findViewById<ImageView>(R.id.profileImage)
 
+        userNameTextView.text = userName
         emailTextView.text = email
         profileImageView.load(imageUrl)
     }

@@ -23,6 +23,9 @@
         <argument
             android:name="imageUrl"
             app:argType="string" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
     </fragment>
 
     <fragment
