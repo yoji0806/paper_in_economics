@@ -25,10 +25,10 @@ Twitter is for floating information, and an AI algorithm is implemented for user
 
 ### Overview
 
+This is the repository of Android application codes the bottom right on the picture below.  
 There is another repository for the scraping script.  
-[Github: paper_scraper](https://github.com/yoji0806/paper_scraper)
+[Github:[Python]: paper_scraper](https://github.com/yoji0806/paper_scraper)
 
-This is the repository of Android application codes the bottom right on the picture below.
 
 <p align="left">
   <img width="600" height="400" src="/images_for_doc/architecture_overview.jpg">
@@ -46,12 +46,11 @@ If you will add UI, please make it Fragment.
 </p>
 
 ## Branching Strategy
-We follow the GitHub flow branch strategy.
-For detail, please refer to [the official page](https://docs.github.com/en/get-started/quickstart/github-flow)
-
+We follow the GitHub flow branch strategy.  
+For detail, please refer to [the official page](https://docs.github.com/en/get-started/quickstart/github-flow)  
 The primary branch is the main branch.
 
-## recommended comment style
+## Recommended Comment Style
 
 If you have your comment style, please follow it.  
 If you don't, please follow the style below so that reviewing codes of pull requests is easy.
