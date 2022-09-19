@@ -14,7 +14,7 @@ Android App to meet a new and fascinating paper, article, and data in economics.
 
 ## Why not Twitter?
 
-Twitter is for floating information, and an AI algorithm is implemented for user engagement, making it hard to find related content and consume content thoroughly.
+Twitter is for floating information, and an AI algorithm is implemented for user engagement, which makes it hard to find related content and consume content thoroughly.
 
 
 <br/><br/>
