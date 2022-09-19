@@ -4,10 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
+import coil.load
+import com.google.android.material.navigation.NavigationView
+import com.yoji0806.paperineconomics.R
 import com.yoji0806.paperineconomics.databinding.FragmentHomeBinding
+
+private const val TAG = "HomeFragment"
 
 class HomeFragment : Fragment() {
 
@@ -16,6 +24,7 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val args: HomeFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +43,30 @@ class HomeFragment : Fragment() {
         }
         return root
     }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val userName = args.userName
+        val email = args.emailAddress
+        val imageUrl = args.imageUrl
+            .toUri().buildUpon().scheme("https").build()
+
+        //TODO: replace with data binding after implementing User viewModel
+        //change text and image in NavigationView
+        val navHeader = requireActivity()   //get reference
+            .findViewById<NavigationView>(R.id.nav_view).getHeaderView(0)
+
+        val userNameTextView = navHeader.findViewById<TextView>(R.id.menuTextUserName)
+        val emailTextView = navHeader.findViewById<TextView>(R.id.menuTextEmail)
+        val profileImageView = navHeader.findViewById<ImageView>(R.id.profileImage)
+
+        userNameTextView.text = userName
+        emailTextView.text = email
+        profileImageView.load(imageUrl)
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
