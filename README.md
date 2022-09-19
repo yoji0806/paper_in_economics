@@ -31,7 +31,7 @@ There is another repository for the scraping script.
 
 
 <p align="left">
-  <img width="600" height="400" src="/images_for_doc/architecture_overview.jpg">
+  <img width="500" height="300" src="/images_for_doc/architecture_overview.jpg">
 </p>
 
 
