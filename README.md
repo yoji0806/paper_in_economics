@@ -3,11 +3,13 @@
   <img width="460" height="300" src="/images_for_doc/icon_white_wide.png">
 </p>
 
+
 # Paper in Economics
 Android App to meet a new and fascinating paper, article, and data in economics.
 
-
-![layout_image](/images_for_doc/layout_image.jpg)
+<p align="center">
+  <img width="920" height="600" src="/images_for_doc/layout_image.jpg">
+</p>
 
 
 ## Why not Twitter?
@@ -23,16 +25,23 @@ Twitter is for floating information, and an AI algorithm is implemented for user
 
 ### Overview
 
-There is another repository for the scraping script.
+There is another repository for the scraping script.  
+[Github: paper_scraper](https://github.com/yoji0806/paper_scraper)
+
+This is the repository of Android application codes the bottom right on the picture below.
 
 ![architecture_overview](/images_for_doc/architecture_overview.jpg)
 
 ### Layout
 
+We use Navigation Drawer and Fragment component.  
+If you will add UI, please make it Fragment.
+
+
 ![architecture_layout_file_diagram](/images_for_doc/architecture_layout_file_diagram.jpg)
 
 ## Branching Strategy
-we follow the GitHub flow branch strategy.
+We follow the GitHub flow branch strategy.
 For detail, please refer to [the official page](https://docs.github.com/en/get-started/quickstart/github-flow)
 
 The primary branch is the main branch.
