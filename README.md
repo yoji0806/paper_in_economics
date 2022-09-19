@@ -41,7 +41,7 @@ We use Navigation Drawer and Fragment component.
 If you add UI, please make it Fragment.
 
 
-<p align="left">
+<p align="center">
   <img width="500" height="300" src="/images_for_doc/architecture_layout_file_diagram.jpg">
 </p>
 
