@@ -54,7 +54,6 @@ class HomeFragment : Fragment() {
             .toUri().buildUpon().scheme("https").build()
 
         //TODO: replace with data binding after implementing User viewModel
-
         //change text and image in NavigationView
         val navHeader = requireActivity()   //get reference
             .findViewById<NavigationView>(R.id.nav_view).getHeaderView(0)
