@@ -1,5 +1,7 @@
 
-![icon_wide](/images_for_doc/icon_white_wide.png)
+<p align="center">
+  <img src="/images_for_doc/icon_white_wide.png">
+</p>
 
 # Paper in Economics
 Android App to meet a new and fascinating paper, article, and data in economics.
