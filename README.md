@@ -25,7 +25,7 @@ Twitter is for floating information, and an AI algorithm is implemented for user
 
 ### Overview
 
-This is the repository of Android application codes the bottom right on the picture below.  
+This Android application repo is at the bottom right of the picture below.  
 There is another repository for the scraping script.  
 [Github:[Python]: paper_scraper](https://github.com/yoji0806/paper_scraper)
 
@@ -38,7 +38,7 @@ There is another repository for the scraping script.
 ### Layout
 
 We use Navigation Drawer and Fragment component.  
-If you will add UI, please make it Fragment.
+If you add UI, please make it Fragment.
 
 
 <p align="left">
@@ -59,10 +59,16 @@ If you don't, please follow the style below so that reviewing codes of pull requ
 - Make the second line blank gently.
 - (optional) Write descriptive information under the third line.
 
-ex:  
+ex:
 ```
 [add] update profile image.
 
 - add a dependency to load an image from URI.
 - add safeArgs "imageUrl"
 ```
+
+This style help reviewers understand the context more deeply, like below.
+
+<p align="center">
+  <img width="460" height="300" src="/images_for_doc/comment_style_from_reviewers_view.png">
+</p>
