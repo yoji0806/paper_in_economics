@@ -26,7 +26,9 @@ Twitter is for floating information, and an AI algorithm is implemented for user
 ### Overview
 
 This Android application repo is at the bottom right of the picture below.  
-There is another repository for the scraping script in Python.  If you want to implement web scraping or recommend engine,  make a pull request in the repository below.  
+There is another repository for the scraping script in Python.  
+If you want to implement web scraping or recommend engine,  make a pull request in the repository below. 
+
 [Github:[Python]: paper_scraper](https://github.com/yoji0806/paper_scraper)
 
 
