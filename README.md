@@ -8,7 +8,7 @@
 Android App to meet a new and fascinating paper, article, and data in economics.
 
 <p align="center">
-  <img width="700" height="500" src="/images_for_doc/layout_image.jpg">
+  <img width="700" height="400" src="/images_for_doc/layout_image.jpg">
 </p>
 
 
