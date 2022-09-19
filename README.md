@@ -69,6 +69,6 @@ ex:
 
 This style help reviewers understand the context more deeply, like below.
 
-<p align="center">
-  <img width="460" height="300" src="/images_for_doc/comment_style_from_reviewers_view.jpg">
+<p align="left">
+  <img width="460" height="400" src="/images_for_doc/comment_style_from_reviewers_view.jpg">
 </p>
