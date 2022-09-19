@@ -30,7 +30,10 @@ There is another repository for the scraping script.
 
 This is the repository of Android application codes the bottom right on the picture below.
 
-![architecture_overview](/images_for_doc/architecture_overview.jpg)
+<p align="left">
+  <img width="600" height="400" src="/images_for_doc/architecture_overview.jpg">
+</p>
+
 
 ### Layout
 
@@ -38,7 +41,9 @@ We use Navigation Drawer and Fragment component.
 If you will add UI, please make it Fragment.
 
 
-![architecture_layout_file_diagram](/images_for_doc/architecture_layout_file_diagram.jpg)
+<p align="left">
+  <img width="600" height="400" src="/images_for_doc/architecture_layout_file_diagram.jpg">
+</p>
 
 ## Branching Strategy
 We follow the GitHub flow branch strategy.
