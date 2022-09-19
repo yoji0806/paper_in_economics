@@ -1,25 +1,33 @@
+
+![icon_wide](/images_for_doc/icon_white_wide.png)
+
 # Paper in Economics
 Android App to meet a new and fascinating paper, article, and data in economics.
 
+
+![layout_image](/images_for_doc/layout_image.jpg)
 
 
 ## Why not Twitter?
 
 Twitter is for floating information, and an AI algorithm is implemented for user engagement, making it hard to find related content and consume content thoroughly.
 
-![icon_wide](/images_for_doc/icon_wide.png)
 
-
-![layout_image](/images_for_doc/layout_image.jpg)
 
 
 # for Developer
 
 ## Architecture
 
+### Overview
+
+There is another repository for the scraping script.
+
+![architecture_overview](/images_for_doc/architecture_overview.jpg)
+
 ### Layout
 
-![layout_file_diagram](/images_for_doc/layout_file_diagram.jpg)
+![architecture_layout_file_diagram](/images_for_doc/architecture_layout_file_diagram.jpg)
 
 ## Branching Strategy
 we follow the GitHub flow branch strategy.
