@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="/images_for_doc/icon_white_wide.png">
+  <img width="460" height="300" src="/images_for_doc/icon_white_wide.png">
 </p>
 
 # Paper in Economics
