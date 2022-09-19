@@ -7,7 +7,7 @@
 # Paper in Economics
 Android App to meet a new and fascinating paper, article, and data in economics.
 
-<p align="left">
+<p align="center">
   <img width="500" height="300" src="/images_for_doc/layout_image.jpg">
 </p>
 
@@ -30,7 +30,7 @@ There is another repository for the scraping script.
 [Github:[Python]: paper_scraper](https://github.com/yoji0806/paper_scraper)
 
 
-<p align="left">
+<p align="center">
   <img width="500" height="300" src="/images_for_doc/architecture_overview.jpg">
 </p>
 
@@ -69,6 +69,6 @@ ex:
 
 This style help reviewers understand the context more deeply, like below.
 
-<p align="left">
+<p align="center">
   <img width="660" height="300" src="/images_for_doc/comment_style_from_reviewers_view.jpg">
 </p>
