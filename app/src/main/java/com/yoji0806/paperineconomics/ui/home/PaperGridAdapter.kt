@@ -13,6 +13,8 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.yoji0806.paperineconomics.R
 import com.yoji0806.paperineconomics.network.ApiService
+import com.yoji0806.paperineconomics.network.Author
+import com.yoji0806.paperineconomics.network.PaperInfo
 import com.yoji0806.paperineconomics.utility.JournalUtil
 import kotlin.math.truncate
 
@@ -33,7 +35,35 @@ class PaperGridAdapter : RecyclerView.Adapter<PaperGridAdapter.PaperInfoViewHold
     private val apiService = ApiService()
     //TODO for debug:
     private val limit :Long = 2
-    private val paperInfoList = apiService.getPaperInfoAll(limit=limit)
+    //private val paperInfoList = apiService.getPaperInfoAll(limit=limit)
+    //TODO: debug
+    private val paper1 = PaperInfo(
+        abstract_str= "There are one bad news, and one good news.",
+        author_list = listOf(
+            Author(
+                name = "yoji yamamoto",
+                institution = "Kobe U"
+            )
+        ),
+        category_code_list = listOf("A20", "B55", "A19"),
+        title_str = "hello this is paper 1",
+        url = "https://www.aeaweb.org/journals/aer/issues"
+    )
+    private val paper2 = PaperInfo(
+        abstract_str= "With great power comes great responsibility.",
+        author_list = listOf(
+            Author(
+                name = "Kate Kuniwada",
+                institution = "Tokyo U"
+            )
+        ),
+        category_code_list = listOf("A20", "B55", "A19"),
+        title_str = "hello this is paper 2",
+        url = "https://www.aeaweb.org/journals/aer/issues"
+    )
+
+    private val paperInfoList = listOf<PaperInfo>(paper1, paper2)
+
 
     private val journalUtil = JournalUtil()
 

@@ -74,7 +74,7 @@ class HomeFragment : Fragment() {
 
 
         recyclerView = binding.recyclerViewNew
-        recyclerView.layoutManager = GridLayoutManager(context, 4)
+        recyclerView.layoutManager = GridLayoutManager(context, 2)
         recyclerView.adapter = PaperGridAdapter()
     }
 
