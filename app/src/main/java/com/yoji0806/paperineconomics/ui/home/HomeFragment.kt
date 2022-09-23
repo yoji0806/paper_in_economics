@@ -64,9 +64,9 @@ class HomeFragment : Fragment() {
         val navHeader = requireActivity()   //get reference
             .findViewById<NavigationView>(R.id.nav_view).getHeaderView(0)
 
-        val userNameTextView = navHeader.findViewById<TextView>(R.id.menuTextUserName)
-        val emailTextView = navHeader.findViewById<TextView>(R.id.menuTextEmail)
-        val profileImageView = navHeader.findViewById<ImageView>(R.id.profileImage)
+        val userNameTextView = navHeader.findViewById<TextView>(R.id.menu_text_user_name)
+        val emailTextView = navHeader.findViewById<TextView>(R.id.menu_text_email)
+        val profileImageView = navHeader.findViewById<ImageView>(R.id.profile_image)
 
         userNameTextView.text = userName
         emailTextView.text = email
