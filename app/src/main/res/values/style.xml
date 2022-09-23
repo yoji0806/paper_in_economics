@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="GridSpan2_TextTitle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">-3sp</item>
+    </style>
+    <style name="GridSpan2_TextSubstitute">
+        <item name="android:textSize">13sp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:lineSpacingExtra">-3sp</item>
+    </style>
+    <style name="ChipCategory">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:focusable">false</item>
+        <item name="android:clickable">false</item>
+        <item name="android:checkable">false</item>
+        <item name="checkedIconVisible">false</item>
+    </style>
+</resources>
