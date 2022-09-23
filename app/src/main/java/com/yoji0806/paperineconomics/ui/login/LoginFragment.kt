@@ -17,6 +17,7 @@ import com.yoji0806.paperineconomics.databinding.FragmentLoginBinding
 
 
 private const val TAG = "LoginFragment"
+private const val DEBUG = true
 
 class LoginFragment : Fragment() {
 
@@ -47,7 +48,24 @@ class LoginFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         binding.buttonGoogleLogin.setOnClickListener {
-            createSignInIntent()
+
+            if (DEBUG) {
+
+                // move to the home screen with dummy user data for debugging.
+                Log.d(TAG, "[debug]: login with DEBUG mode")
+                Toast.makeText(requireContext(), "Login Succeeded!", Toast.LENGTH_SHORT)
+                    .show()
+
+                val email = "example@gmail.com"
+                val profileImageUrl = "https://lh3.googleusercontent.com/a-/ACNPEu-jE7xsUAEXcgvqrYs2WGUaIDPMwf86-mqx6FOk=s96-c"
+                val userName = "Yoji Yamamoto"
+                val action = LoginFragmentDirections.actionLoginFragmentToNavHome(emailAddress = email, imageUrl = profileImageUrl, userName = userName)
+                findNavController().navigate(action)
+
+
+            } else {
+                createSignInIntent()
+            }
         }
 
         return binding.root
