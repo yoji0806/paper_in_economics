@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/ic_google_circle.xml" value="0.2995" />
         <entry key="app/src/main/res/drawable/ic_menu_camera.xml" value="0.2995" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.3665" />
+        <entry key="app/src/main/res/layout-w936dp/view_category_chip.xml" value="0.6396408081054688" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24297332763671875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28792114257812496" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.22271169026692714" />
@@ -15,8 +16,9 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3626296997070313" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2591669718424479" />
         <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.37395833333333334" />
-        <entry key="app/src/main/res/layout/grid_view_item_paper.xml" value="0.2828446982563406" />
+        <entry key="app/src/main/res/layout/grid_view_item_paper.xml" value="0.2425279257954031" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/view_category_chip.xml" value="0.3595575968424478" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.37395833333333334" />
         <entry key="app/src/main/res/menu/main.xml" value="0.37395833333333334" />
       </map>

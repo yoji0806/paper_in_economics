@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.marginEnd
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
@@ -22,7 +23,7 @@ class PaperGridAdapter : RecyclerView.Adapter<PaperGridAdapter.PaperInfoViewHold
 
 
     // provide a reference of the view which will be displayed.
-    class PaperInfoViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class PaperInfoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val card = view.findViewById<MaterialCardView>(R.id.card_paper_small)!!
         val title = view.findViewById<TextView>(R.id.card_title_text)!!
         val authors = view.findViewById<TextView>(R.id.card_authors_text)!!
@@ -46,7 +47,7 @@ class PaperGridAdapter : RecyclerView.Adapter<PaperGridAdapter.PaperInfoViewHold
             )
         ),
         category_code_list = listOf("A20", "B55", "A19"),
-        title_str = "hello this is paper 1",
+        title_str = "Productivity Shocks, Long-Term Contracts, and Earnings Dynamics",
         url = "https://www.aeaweb.org/journals/aer/issues"
     )
     private val paper2 = PaperInfo(
@@ -58,7 +59,7 @@ class PaperGridAdapter : RecyclerView.Adapter<PaperGridAdapter.PaperInfoViewHold
             )
         ),
         category_code_list = listOf("A20", "B55", "A19"),
-        title_str = "hello this is paper 2",
+        title_str = "Aggregating Distributional Treatment Effects: A Bayesian Hierarchical Analysis of the Microcredit Literature",
         url = "https://www.aeaweb.org/journals/aer/issues"
     )
 
@@ -120,10 +121,8 @@ class PaperGridAdapter : RecyclerView.Adapter<PaperGridAdapter.PaperInfoViewHold
         Chip(context).apply {
             id = View.generateViewId()
             text = label
-            isCheckable = false
-            isClickable = false
-            isCheckedIconVisible = false
-            isFocusable = false
+            setTextAppearance(R.style.ChipCategory)
+            setEnsureMinTouchTargetSize(false)
             addView(this)
         }
     }

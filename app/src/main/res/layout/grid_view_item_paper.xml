@@ -7,38 +7,35 @@
     android:id="@+id/card_paper_small"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
     android:checkable="false"
     android:clickable="true"
     android:focusable="true"
+    app:strokeColor="@color/black"
+    app:strokeWidth="1sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="15dp">
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/card_title_text"
+            style="@style/GridSpan2_TextTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:text="The Welfare Effects of Peer Entry: The Case of Airbnb and the Accommodation Industry"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            tools:text="The Welfare Effects of Peer Entry: The Case of Airbnb and the Accommodation Industry" />
 
         <TextView
             android:id="@+id/card_authors_text"
+            style="@style/GridSpan2_TextSubstitute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            android:text="Farronato, Chiara  (Harvard) \nFradkin, Andrey  (Boston U and MIT)" />
+            tools:text="Farronato, Chiara  (Harvard) \nFradkin, Andrey  (Boston U and MIT)" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
@@ -50,7 +47,7 @@
                 android:id="@+id/card_thumbnail"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:contentDescription="TODO"
+                android:contentDescription="@string/aer_logo"
                 android:src="@drawable/ic_aer_logo_circle"
                 tools:src="@drawable/ic_aer_logo_circle" />
 
@@ -59,7 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
-                android:text="American Economic Review" />
+                style="@style/GridSpan2_TextSubstitute"
+                tools:text="American Economic Review" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -72,7 +70,9 @@
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/categoryGroup"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:chipSpacing="3dp">
                 <!-- Chips can be declared here, or added dynamically. -->
             </com.google.android.material.chip.ChipGroup>
 
