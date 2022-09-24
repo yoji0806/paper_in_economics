@@ -4,12 +4,14 @@ import android.content.Context
 import android.view.View
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.yoji0806.paperineconomics.DataForDev
 import com.yoji0806.paperineconomics.R
 
 class JournalUtil {
 
-    private val journalAER = "American Economic Review"
-    private val journalEconometrica = "Econometrica"
+    private val dataForDev = DataForDev()
+    private val journalAER = dataForDev.journalAER
+    private val journalEconometrica = dataForDev.journalEconometrica
 
 
     fun getJournalFromUrl(url: String) : String{
