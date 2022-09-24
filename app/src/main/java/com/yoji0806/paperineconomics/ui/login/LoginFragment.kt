@@ -13,11 +13,12 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.FirebaseAuth
+import com.yoji0806.paperineconomics.DataForDev
 import com.yoji0806.paperineconomics.databinding.FragmentLoginBinding
 
 
 private const val TAG = "LoginFragment"
-private const val DEBUG = true
+private val DEBUG = DataForDev().debug
 
 class LoginFragment : Fragment() {
 
