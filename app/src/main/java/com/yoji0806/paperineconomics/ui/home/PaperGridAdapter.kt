@@ -1,131 +1,125 @@
 package com.yoji0806.paperineconomics.ui.home
 
 import android.content.Context
-import android.view.ContentInfo
+import android.icu.lang.UCharacter.GraphemeClusterBreak.L
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.marginEnd
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.yoji0806.paperineconomics.R
+import com.yoji0806.paperineconomics.databinding.GridViewItemPaperBinding
 import com.yoji0806.paperineconomics.network.ApiService
 import com.yoji0806.paperineconomics.network.Author
 import com.yoji0806.paperineconomics.network.PaperInfo
 import com.yoji0806.paperineconomics.utility.JournalUtil
-import kotlin.math.truncate
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
-class PaperGridAdapter : RecyclerView.Adapter<PaperGridAdapter.PaperInfoViewHolder>() {
 
 
-    // provide a reference of the view which will be displayed.
-    class PaperInfoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val card = view.findViewById<MaterialCardView>(R.id.card_paper_small)!!
-        val title = view.findViewById<TextView>(R.id.card_title_text)!!
-        val authors = view.findViewById<TextView>(R.id.card_authors_text)!!
-        val thumbnail = view.findViewById<ImageView>(R.id.card_thumbnail)!!
-        val journal = view.findViewById<TextView>(R.id.card_resource_title)!!
-        val categoryGroup = view.findViewById<ChipGroup>(R.id.categoryGroup)!!
+private const val LIMIT :Long = 2
+
+class PaperGridAdapter : ListAdapter<PaperInfo,
+        PaperGridAdapter.PaperInfoViewHolder>(PaperInfo.DIFF_UTIL) {
+//RecyclerView.Adapter<PaperGridAdapter.PaperInfoViewHolder>() {
+
+
+    inner class PaperInfoViewHolder(val binding: GridViewItemPaperBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(PaperInfo: PaperInfo) {
+            binding.paper = PaperInfo
+            binding.executePendingBindings()    //update views in this ViewHolder immediately
+        }
     }
 
-    //data read from DB.
-    private val apiService = ApiService()
-    //TODO for debug:
-    private val limit :Long = 2
-    //private val paperInfoList = apiService.getPaperInfoAll(limit=limit)
-    //TODO: debug
-    private val paper1 = PaperInfo(
-        abstract_str= "There are one bad news, and one good news.",
-        author_list = listOf(
-            Author(
-                name = "yoji yamamoto",
-                institution = "Kobe U"
-            )
-        ),
-        category_code_list = listOf("A20", "B55", "A19"),
-        title_str = "Productivity Shocks, Long-Term Contracts, and Earnings Dynamics",
-        url = "https://www.aeaweb.org/journals/aer/issues"
-    )
-    private val paper2 = PaperInfo(
-        abstract_str= "With great power comes great responsibility.",
-        author_list = listOf(
-            Author(
-                name = "Kate Kuniwada",
-                institution = "Tokyo U"
-            )
-        ),
-        category_code_list = listOf("A20", "B55", "A19"),
-        title_str = "Aggregating Distributional Treatment Effects: A Bayesian Hierarchical Analysis of the Microcredit Literature",
-        url = "https://www.aeaweb.org/journals/aer/issues"
-    )
-
-    private val paperInfoList = listOf<PaperInfo>(paper1, paper2)
-
-
+    private val viewModel = HomeViewModel()
     private val journalUtil = JournalUtil()
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaperInfoViewHolder {
-        val layout = LayoutInflater
-            .from(parent.context)
-            .inflate(R.layout.grid_view_item_paper, parent, false)
+//        val layout = LayoutInflater
+//            .from(parent.context)
+//            .inflate(R.layout.grid_view_item_paper, parent, false)
 
-        return PaperInfoViewHolder(layout)
+//        val layoutInflater = LayoutInflater.from(parent.context)
+//        val binding = DataBindingUtil.inflate<GridViewItemPaperBinding>(
+//            layoutInflater, R.layout.grid_view_item_paper, parent, false
+//        )
+
+        return PaperInfoViewHolder(GridViewItemPaperBinding.inflate(
+            LayoutInflater.from(parent.context)
+        ))
     }
 
     override fun onBindViewHolder(holder: PaperInfoViewHolder, position: Int) {
-        val item = paperInfoList[position]
 
-        // combine author's information in one line.
-        var authorsText = ""
-        var loopCounter = 1
-        for (author in item.author_list) {
+        val paperInfo = getItem(position)
+        holder.bind(paperInfo)
 
-            authorsText += if (loopCounter > 1) {
-                "\n${author.name}  (${author.institution})"
-            } else {
-                "${author.name}  (${author.institution})"
-            }
 
-            loopCounter +=1
-        }
+        //TODO: use data binding and eliminate codes below.
 
-        // get journal Logo image
-        val url = item.url
-        val journal = journalUtil.getJournalFromUrl(url)
-        val logo = journalUtil.getJournalLogo(journal)
-
-        // add category chip
-        for (category_code in item.category_code_list) {
-            val categoryName = journalUtil.jefCodeToClassification(category_code)
-            holder.categoryGroup.addChip( holder.categoryGroup.context , categoryName)
-        }
-
-        holder.title.text = item.title_str
-        holder.authors.text = authorsText
-        holder.thumbnail.setImageResource(logo)
-        holder.journal.text = journal
+//        // combine author's information in one line.
+//        var authorsText = ""
+//        var loopCounter = 1
+//
+//        for (author in item.author_list) {
+//
+//            authorsText += if (loopCounter > 1) {
+//                "\n${author.name}  (${author.institution})"
+//            } else {
+//                "${author.name}  (${author.institution})"
+//            }
+//
+//            loopCounter +=1
+//        }
+//
+//        // get journal Logo image
+//        val url = item.url
+//        val journal = journalUtil.getJournalFromUrl(url)
+//        val logo = journalUtil.getJournalLogo(journal)
+//
+//        // add category chip
+//        for (category_code in item.category_code_list) {
+//            val categoryName = journalUtil.jefCodeToClassification(category_code)
+//            holder.binding.categoryGroup.addChip( holder.binding.categoryGroup.context , categoryName)
+//        }
+//
+//        holder.binding.cardTitleText.text = item.title_str
+//        holder.binding.cardAuthorsText.text = authorsText
+//        holder.binding.cardThumbnail.setImageResource(logo)
+//
+//        holder.binding.cardResourceTitle.text = journal
     }
 
-    override fun getItemCount(): Int {
-        return paperInfoList.size
-    }
 
 
-    private fun ChipGroup.addChip(context: Context, label: String) {
-        Chip(context).apply {
-            id = View.generateViewId()
-            text = label
-            setTextAppearance(R.style.ChipCategory)
-            setEnsureMinTouchTargetSize(false)
-            addView(this)
-        }
-    }
+
+//    private fun ChipGroup.addChip(context: Context, label: String) {
+//        Chip(context).apply {
+//            id = View.generateViewId()
+//            text = label
+//            setTextAppearance(R.style.ChipCategory)
+//            setEnsureMinTouchTargetSize(false)
+//            addView(this)
+//        }
+//    }
+
+
+
+
+
+
+
+
 
 
 

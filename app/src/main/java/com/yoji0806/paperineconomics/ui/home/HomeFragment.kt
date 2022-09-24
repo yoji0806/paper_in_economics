@@ -8,7 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,37 +31,36 @@ class HomeFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
+    private val viewModel: HomeViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+//        val homeViewModel =
+//            ViewModelProvider(this).get(HomeViewModel::class.java)
 
+        // initialize data binding
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
-
-        return root
+        return binding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //change text and image in the NavigationView-------------
         val userName = args.userName
         val email = args.emailAddress
         val imageUrl = args.imageUrl
             .toUri().buildUpon().scheme("https").build()
 
         //TODO: replace with data binding after implementing User viewModel
-        //change text and image in the NavigationView
         val navHeader = requireActivity()   //get reference
             .findViewById<NavigationView>(R.id.nav_view).getHeaderView(0)
 
@@ -71,11 +71,30 @@ class HomeFragment : Fragment() {
         userNameTextView.text = userName
         emailTextView.text = email
         profileImageView.load(imageUrl)
+        //-------------------------------------------------------end
 
+
+
+        //configure the Recycler View ---------------------------
+        val paperGridAdapter = PaperGridAdapter()
+
+        //update list later.
+        viewModel.paperInfoList.observe(viewLifecycleOwner, Observer {
+            paperGridAdapter.submitList(it)
+        })
 
         recyclerView = binding.recyclerViewNew
         recyclerView.layoutManager = GridLayoutManager(context, 2)
-        recyclerView.adapter = PaperGridAdapter()
+        recyclerView.adapter = paperGridAdapter
+        //------------------------------------------------------end
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        //get data from DB.
+        viewModel.getNewPaperList()
     }
 
 
