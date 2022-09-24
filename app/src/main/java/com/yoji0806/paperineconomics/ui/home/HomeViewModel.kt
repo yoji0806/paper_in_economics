@@ -27,15 +27,6 @@ class HomeViewModel : ViewModel() {
     }
 
 
-    //TODO remove after implement.
-    private val _text = MutableLiveData<String>().apply {
-       value = "iei"
-    }
-    val text: LiveData<String> = _text
-
-
-
-
     fun getNewPaperList(){
         // for local development
         val debug = DataForDev().debug
@@ -91,7 +82,6 @@ class HomeViewModel : ViewModel() {
 
         return listOf(paper1, paper2)
     }
-
 }
 
 

@@ -39,10 +39,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        val homeViewModel =
-//            ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        // initialize data binding
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -79,6 +75,7 @@ class HomeFragment : Fragment() {
         val paperGridAdapter = PaperGridAdapter()
 
         //update list later.
+        //TODO does this still need?
         viewModel.paperInfoList.observe(viewLifecycleOwner, Observer {
             paperGridAdapter.submitList(it)
         })
@@ -91,6 +88,7 @@ class HomeFragment : Fragment() {
 
     }
 
+    //TODO does this still need?
     override fun onResume() {
         super.onResume()
         //get data from DB.

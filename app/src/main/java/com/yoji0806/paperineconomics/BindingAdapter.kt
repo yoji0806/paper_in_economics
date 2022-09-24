@@ -1,6 +1,5 @@
 package com.yoji0806.paperineconomics
 
-import android.app.appsearch.StorageInfo
 import android.content.Context
 import android.view.View
 import android.widget.ImageView
@@ -43,7 +42,6 @@ fun bindingPaperAuthorsTextView(textView: TextView,
 
         loopCounter +=1
     }
-
 
     textView.text = authorsText
 }
