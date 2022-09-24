@@ -22,6 +22,7 @@ fun bindingPaperRecyclerView(recyclerView: RecyclerView,
                              data: List<PaperInfo>?) {
     val adapter = recyclerView.adapter as PaperGridAdapter
     adapter.submitList(data)    // tells the RecyclerView when a new list is available.
+    adapter.notifyDataSetChanged()
 }
 
 

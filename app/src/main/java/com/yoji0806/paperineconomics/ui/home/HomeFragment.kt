@@ -89,11 +89,11 @@ class HomeFragment : Fragment() {
     }
 
     //TODO does this still need?
-    override fun onResume() {
-        super.onResume()
-        //get data from DB.
-        viewModel.getNewPaperList()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        //get data from DB.
+//        viewModel.getNewPaperList()
+//    }
 
 
     override fun onDestroyView() {
