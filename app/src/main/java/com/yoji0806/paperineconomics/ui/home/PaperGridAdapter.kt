@@ -20,7 +20,7 @@ class PaperGridAdapter : ListAdapter<PaperInfo,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaperInfoViewHolder {
         return PaperInfoViewHolder(GridViewItemPaperBinding.inflate(
-            LayoutInflater.from(parent.context)
+            LayoutInflater.from(parent.context), parent, false
         ))
     }
 
