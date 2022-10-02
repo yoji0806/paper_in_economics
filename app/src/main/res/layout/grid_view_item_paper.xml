@@ -83,10 +83,11 @@
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/categoryGroup"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="103dp"
                     android:layout_marginTop="10dp"
                     app:chipSpacing="3dp"
-                    app:addCategoryChips="@{paper.category_code_list}">
+                    app:addCategoryChipsSmall="@{paper.category_code_list}">
+                    <!-- layout_height is fixed to show only 3 chips because it needs to pass all chips as safeArgs. -->
                     <!-- Chips can be declared here, or added dynamically. -->
                 </com.google.android.material.chip.ChipGroup>
 

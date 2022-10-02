@@ -17,4 +17,7 @@
     <string name="american_economic_review">American Economic Review</string>
     <string name="econometrica">Econometrica</string>
     <string name="journal_logo_image">journal logo image</string>
+    <string name="follow">follow</string>
+    <string name="jef_code">JEF category</string>
+    <string name="w_abstract">Abstract</string>
 </resources>

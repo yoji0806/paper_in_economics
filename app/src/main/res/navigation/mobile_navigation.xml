@@ -26,6 +26,9 @@
         <argument
             android:name="userName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_detail"
+            app:destination="@id/nav_detail" />
     </fragment>
 
     <fragment
@@ -50,5 +53,26 @@
             app:destination="@id/nav_home"
             app:enterAnim="@anim/fui_slide_in_right" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detail"
+        android:name="com.yoji0806.paperineconomics.ui.detail.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="paper_title"
+            app:argType="string" />
+        <argument
+            android:name="paper_url"
+            app:argType="string" />
+        <argument
+            android:name="paper_abstract"
+            app:argType="string" />
+        <argument
+            android:name="paper_authors"
+            app:argType="string" />
+        <argument
+            android:name="paper_category_list"
+            app:argType="string[]" />
     </fragment>
 </navigation>

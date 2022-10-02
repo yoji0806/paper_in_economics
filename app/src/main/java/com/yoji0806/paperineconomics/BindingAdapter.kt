@@ -11,10 +11,12 @@ import com.google.android.material.chip.ChipGroup
 import com.yoji0806.paperineconomics.network.Author
 import com.yoji0806.paperineconomics.network.PaperInfo
 import com.yoji0806.paperineconomics.ui.home.PaperGridAdapter
+import com.yoji0806.paperineconomics.utility.DataUtil
 import com.yoji0806.paperineconomics.utility.JournalUtil
 
 
 private val journalUtil = JournalUtil()
+private val dataUtil = DataUtil()
 
 
 @BindingAdapter("listPaperInfoData")
@@ -29,21 +31,7 @@ fun bindingPaperRecyclerView(recyclerView: RecyclerView,
 @BindingAdapter("adjustAndSetAuthorsText")
 fun bindingPaperAuthorsTextView(textView: TextView,
                                 author_list: List<Author>){
-    // combine author's information in one line.
-    var authorsText = ""
-    var loopCounter = 1
-
-    for (author in author_list) {
-
-        authorsText += if (loopCounter > 1) {
-            "\n${author.name}  (${author.institution})"
-        } else {
-            "${author.name}  (${author.institution})"
-        }
-
-        loopCounter +=1
-    }
-
+    val authorsText = dataUtil.convertAuthorListIntoOneLine(author_list)
     textView.text = authorsText
 }
 
@@ -64,28 +52,31 @@ fun bindingJournalTextView(textView: TextView, url: String) {
 }
 
 
-@BindingAdapter("addCategoryChips")
-fun addCategoryChips(chipGroup: ChipGroup, categoryCodeList: List<String>) {
-    //limit the number of chip to display.
-    val limit = 3
-
-    var counter = 0
+@BindingAdapter("addCategoryChipsLarge")
+fun addCategoryChipsLarge(chipGroup: ChipGroup, categoryCodeList: List<String>) {
     // add category chip
     for (categoryCode in categoryCodeList) {
-        if (counter == limit) break
-
         val categoryName = journalUtil.jefCodeToClassification(categoryCode)
-        chipGroup.addChip( chipGroup.context , categoryName)
-        counter ++
+        chipGroup.addChip( chipGroup.context , categoryName, R.style.ChipCategoryLarge)
     }
-
 }
 
-private fun ChipGroup.addChip(context: Context, label: String) {
+@BindingAdapter("addCategoryChipsSmall")
+fun addCategoryChipsSmall(chipGroup: ChipGroup, categoryCodeList: List<String>) {
+    // add category chip
+    for (categoryCode in categoryCodeList) {
+        val categoryName = journalUtil.jefCodeToClassification(categoryCode)
+        chipGroup.addChip( chipGroup.context , categoryName, R.style.ChipCategorySmall)
+    }
+}
+
+
+
+private fun ChipGroup.addChip(context: Context, label: String, style: Int) {
     Chip(context).apply {
         id = View.generateViewId()
         text = label
-        setTextAppearance(R.style.ChipCategory)
+        setTextAppearance(style)
         setEnsureMinTouchTargetSize(false)
         addView(this)
     }

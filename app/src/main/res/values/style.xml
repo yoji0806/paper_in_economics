@@ -12,9 +12,16 @@
         <item name="android:paddingBottom">5dp</item>
         <item name="android:lineSpacingExtra">-3sp</item>
     </style>
-    <style name="ChipCategory">
+    <style name="ChipCategorySmall">
         <item name="android:textSize">10sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:focusable">false</item>
+        <item name="android:clickable">false</item>
+        <item name="android:checkable">false</item>
+        <item name="checkedIconVisible">false</item>
+    </style>
+    <style name="ChipCategoryLarge">
+        <item name="android:textSize">12sp</item>
         <item name="android:focusable">false</item>
         <item name="android:clickable">false</item>
         <item name="android:checkable">false</item>

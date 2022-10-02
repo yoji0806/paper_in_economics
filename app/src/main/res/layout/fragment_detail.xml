@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.yoji0806.paperineconomics.ui.detail.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" >
+
+
+                        <TextView
+                            android:id="@+id/text_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="@{viewModel.paperTitle}"
+                            android:textSize="30sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            tools:text="Sentiment and Speculation in a Market with Heterogeneous Beliefs"/>
+
+
+                        <ImageButton
+                            android:id="@+id/button_bookmark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:layout_margin="10dp"
+                            android:layout_gravity="right"
+                            app:srcCompat="@drawable/ic_baseline_bookmark_added_24" />
+
+
+                        <TextView
+                            android:id="@+id/text_authors"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.paperAuthors}"
+                            android:layout_marginBottom="10dp"
+                            android:textSize="25sp"
+                            tools:text="Ian W. R. Martin  (London School of Economics and Political Science) \nYoji Yamamoto  (Kobe University)"/>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="10dp">
+
+                            <ImageView
+                                android:id="@+id/image_journal_logo"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                app:setJournalImage="@{viewModel.paperUrl}"
+                                tools:srcCompat="@drawable/ic_aer_logo_circle" />
+
+                            <TextView
+                                android:id="@+id/text_journal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textSize="17sp"
+                                app:setJournalText="@{viewModel.paperUrl}"
+                                tools:text="American Economic Review"/>
+
+                            <Button
+                                android:id="@+id/button_follow_journal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_marginStart="15dp"
+                                android:text="@string/follow"
+                                android:textSize="10sp"
+                                android:gravity="center"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="@string/jef_code"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:background="@drawable/text_underline"
+                            android:textColor="@color/black" />
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chip_group_jef"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp"
+                            app:chipSpacing="3dp"
+                            app:addCategoryChipsLarge="@{viewModel.paperCategoryList}">
+
+                        </com.google.android.material.chip.ChipGroup>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/w_abstract"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:background="@drawable/text_underline"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/text_abstract"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.paperAbstract}"
+                            android:textColor="@color/black"
+                            android:lineSpacingExtra="3dp"
+                            android:textSize="15sp"
+                            android:paddingBottom="100dp"
+                            tools:text="We present a model featuring risk-averse investors with heterogeneous beliefs. Individuals who are correct in hindsight—whether through luck or judgment—get rich, so sentiment is bullish following good news and bearish following bad news. Sentiment makes extreme outcomes far more important for pricing and has asymmetric effects on left- and right-skewed assets. Investors take speculative positions that can conflict with their fundamental views. Moderate investors are contrarian: they trade against excess volatility created by extremists. All investors view speculation as socially costly; but they also think it is in their self-interest, and the market can collapse entirely if speculation is banned. Investors take speculative positions that can conflict with their fundamental views. Moderate investors are contrarian: they trade against excess volatility created by extremists. All investors view speculation as socially costly; but they also think it is in their self-interest, and the market can collapse entirely if speculation is banned."/>
+                    </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
