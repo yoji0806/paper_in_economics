@@ -66,12 +66,19 @@ fun bindingJournalTextView(textView: TextView, url: String) {
 
 @BindingAdapter("addCategoryChips")
 fun addCategoryChips(chipGroup: ChipGroup, categoryCodeList: List<String>) {
+    //limit the number of chip to display.
+    val limit = 3
 
+    var counter = 0
     // add category chip
     for (categoryCode in categoryCodeList) {
+        if (counter == limit) break
+
         val categoryName = journalUtil.jefCodeToClassification(categoryCode)
         chipGroup.addChip( chipGroup.context , categoryName)
+        counter ++
     }
+
 }
 
 private fun ChipGroup.addChip(context: Context, label: String) {
