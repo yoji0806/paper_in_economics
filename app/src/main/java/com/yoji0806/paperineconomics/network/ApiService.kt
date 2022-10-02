@@ -3,13 +3,7 @@ package com.yoji0806.paperineconomics.network
 import android.util.Log
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import com.yoji0806.paperineconomics.addCategoryChips
-import com.yoji0806.paperineconomics.ui.home.HomeViewModel
 import com.yoji0806.paperineconomics.ui.home.PaperGridAdapter
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 private const val TAG = "[ApiService]"
 
@@ -46,8 +40,6 @@ class ApiService {
 
         val db = Firebase.firestore
         val collection = "papers"
-
-        val adapter = PaperGridAdapter()
 
         db.collection(collection)
             .limit(limit)

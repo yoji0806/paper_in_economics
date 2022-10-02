@@ -1,11 +1,6 @@
 package com.yoji0806.paperineconomics.network
 
 import androidx.recyclerview.widget.DiffUtil
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
-import io.grpc.internal.DnsNameResolver
-
-
 
 data class PaperInfo(
     val abstract_str: String = "",

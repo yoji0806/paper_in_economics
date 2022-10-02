@@ -51,7 +51,6 @@ class LoginFragment : Fragment() {
         binding.buttonGoogleLogin.setOnClickListener {
 
             if (DEBUG) {
-
                 // move to the home screen with dummy user data for debugging.
                 Log.d(TAG, "[debug]: login with DEBUG mode")
                 Toast.makeText(requireContext(), "Login Succeeded!", Toast.LENGTH_SHORT)
@@ -62,7 +61,6 @@ class LoginFragment : Fragment() {
                 val userName = "Yoji Yamamoto"
                 val action = LoginFragmentDirections.actionLoginFragmentToNavHome(emailAddress = email, imageUrl = profileImageUrl, userName = userName)
                 findNavController().navigate(action)
-
 
             } else {
                 createSignInIntent()
@@ -97,7 +95,11 @@ class LoginFragment : Fragment() {
             val profileImageUrl = currentUser?.photoUrl.toString()
             val userName = currentUser?.displayName.toString()
 
-            val action = LoginFragmentDirections.actionLoginFragmentToNavHome(emailAddress = email, imageUrl = profileImageUrl, userName = userName)
+            val action = LoginFragmentDirections.actionLoginFragmentToNavHome(
+                emailAddress = email,
+                imageUrl = profileImageUrl,
+                userName = userName
+            )
             findNavController().navigate(action)
 
             //TODO: implement this method if needed
