@@ -22,6 +22,7 @@ import com.yoji0806.paperineconomics.R
 import com.yoji0806.paperineconomics.databinding.FragmentHomeBinding
 import com.yoji0806.paperineconomics.network.PaperInfo
 import com.yoji0806.paperineconomics.utility.DataUtil
+import org.w3c.dom.Text
 
 private const val TAG = "HomeFragment"
 
@@ -58,6 +59,7 @@ class HomeFragment : Fragment() {
 
         //change text and image in the NavigationView-------------
         val userName = args.userName
+        val userUid = args.userUid
         val email = args.emailAddress
         val imageUrl = args.imageUrl
             .toUri().buildUpon().scheme("https").build()
@@ -73,6 +75,9 @@ class HomeFragment : Fragment() {
         userNameTextView.text = userName
         emailTextView.text = email
         profileImageView.load(imageUrl)
+        //TODO: replace with local DB.
+        val hiddenTextView = navHeader.findViewById<TextView>(R.id.hidden_text_uid)
+        hiddenTextView.text = userUid
         //-------------------------------------------------------end
 
 

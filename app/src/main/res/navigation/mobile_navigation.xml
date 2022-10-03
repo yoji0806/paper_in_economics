@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_detail"
             app:destination="@id/nav_detail" />
+        <argument
+            android:name="userUid"
+            app:argType="string" />
     </fragment>
 
     <fragment
