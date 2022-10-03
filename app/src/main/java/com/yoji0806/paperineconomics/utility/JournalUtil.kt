@@ -1,9 +1,5 @@
 package com.yoji0806.paperineconomics.utility
 
-import android.content.Context
-import android.view.View
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.yoji0806.paperineconomics.DataForDev
 import com.yoji0806.paperineconomics.R
 
@@ -14,12 +10,33 @@ class JournalUtil {
     private val journalEconometrica = dataForDev.journalEconometrica
 
 
+    // keyword to identify each journal from its URL.
+    private val keywordAER = "https://www.aeaweb.org"
+
+
     fun getJournalFromUrl(url: String) : String{
-        val keywordAER = "https://www.aeaweb.org"
 
         //AER (American Economic Review)
         if (keywordAER in url) {
             return journalAER
+        }
+
+        return "unknown"
+    }
+
+
+    // We replace the slash mark(/) with an underscore(_) in DOI because of DB issues.
+    fun getDoiFromUrl(url: String) : String{
+
+        //AER (American Economic Review)
+        if (keywordAER in url) {
+            val sliceKey = "/articles?id="
+            val startIndex = url.indexOf(sliceKey) + sliceKey.length
+            val endIndex = url.lastIndex
+            var doi = url.slice(startIndex..endIndex)
+            doi = doi.replace("/", "_")
+            doi = doi.replace(".", "_")
+            return doi
         }
 
         return "unknown"
