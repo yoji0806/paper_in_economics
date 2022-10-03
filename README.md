@@ -21,6 +21,24 @@ Twitter is for floating information, and an AI algorithm is implemented for user
 
 # for Developer
 
+## Getting Started
+
+- git clone
+- make sure debug=ture in [DataForDev.kt](app/src/main/java/com/yoji0806/paperineconomics/DataForDev.kt) file.
+- install to your device via AndroidStudio.
+
+The differences between the deployed app and your local app is below:
+- no Google login request in your local app. 
+- Your local app fetch and show dummy data from local files.
+
+If you want to develop in the same environment as the deployed app, set up below.
+- make your own project in [Firebase](https://firebase.google.com/).
+- download google-services.json from Firebase.
+- put google-services.json in the [app directory](app).
+- change "debug" into false in [DataForDev.kt](app/src/main/java/com/yoji0806/paperineconomics/DataForDev.kt) file.
+- install to your device via AndroidStudio. (An emulator doesn't work with google auth request.)
+
+
 ## Architecture
 
 ### Overview
