@@ -59,7 +59,8 @@ class LoginFragment : Fragment() {
                 val email = "example@gmail.com"
                 val profileImageUrl = "https://lh3.googleusercontent.com/a-/ACNPEu-jE7xsUAEXcgvqrYs2WGUaIDPMwf86-mqx6FOk=s96-c"
                 val userName = "Yoji Yamamoto"
-                val action = LoginFragmentDirections.actionLoginFragmentToNavHome(emailAddress = email, imageUrl = profileImageUrl, userName = userName)
+                val uid = "xxxxxxxxxxx"
+                val action = LoginFragmentDirections.actionLoginFragmentToNavHome(emailAddress = email, imageUrl = profileImageUrl, userName = userName, userUid = uid)
                 findNavController().navigate(action)
 
             } else {
@@ -91,6 +92,9 @@ class LoginFragment : Fragment() {
 
             val email = response?.email.toString()
             val currentUser = FirebaseAuth.getInstance().currentUser
+            val uid = currentUser?.uid.toString()
+
+            Log.d(TAG, "[debug]: uid: $uid")
 
             val profileImageUrl = currentUser?.photoUrl.toString()
             val userName = currentUser?.displayName.toString()
@@ -98,7 +102,8 @@ class LoginFragment : Fragment() {
             val action = LoginFragmentDirections.actionLoginFragmentToNavHome(
                 emailAddress = email,
                 imageUrl = profileImageUrl,
-                userName = userName
+                userName = userName,
+                userUid = uid
             )
             findNavController().navigate(action)
 
