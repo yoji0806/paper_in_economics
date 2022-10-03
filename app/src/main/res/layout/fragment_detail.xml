@@ -56,8 +56,9 @@
                             android:layout_height="wrap_content"
                             android:background="@color/white"
                             android:layout_margin="10dp"
+                            android:paddingEnd="10dp"
                             android:layout_gravity="right"
-                            app:srcCompat="@drawable/ic_baseline_bookmark_added_24" />
+                            app:srcCompat="@drawable/ic_baseline_bookmark_border_grey_40" />
 
 
                         <TextView

@@ -9,17 +9,23 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.navArgs
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.yoji0806.paperineconomics.R
 import com.yoji0806.paperineconomics.databinding.FragmentDetailBinding
 
 private const val TAG = "DetailFragment"
 class DetailFragment : Fragment() {
 
-    private val args: DetailFragmentArgs by navArgs()
-
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
 
+    private val args: DetailFragmentArgs by navArgs()
+    private var isBookmarked = false
     private val viewModel: DetailViewModel by viewModels()
+
+    private lateinit var database: DatabaseReference
 
 
     override fun onCreateView(
@@ -27,8 +33,18 @@ class DetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        database = Firebase.database.reference
+
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
+        binding.buttonBookmark.setOnClickListener{
+            isBookmarked = !isBookmarked
+            if (isBookmarked){
+                binding.buttonBookmark.setImageResource(R.drawable.ic_baseline_bookmark_added_24)
+            }else{
+                binding.buttonBookmark.setImageResource(R.drawable.ic_baseline_bookmark_border_grey_40)
+            }
+        }
 
         return binding.root
     }
