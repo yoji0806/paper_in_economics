@@ -1,4 +1,4 @@
-package com.yoji0806.paperineconomics.ui.gallery
+package com.yoji0806.paperineconomics.ui.bookmark
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.yoji0806.paperineconomics.databinding.FragmentGalleryBinding
 
-class GalleryFragment : Fragment() {
+class BookmarkFragment : Fragment() {
 
     private var _binding: FragmentGalleryBinding? = null
 
@@ -23,7 +23,7 @@ class GalleryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val galleryViewModel =
-            ViewModelProvider(this).get(GalleryViewModel::class.java)
+            ViewModelProvider(this).get(BookmarkViewModel::class.java)
 
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root: View = binding.root
