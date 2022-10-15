@@ -4,6 +4,7 @@ import android.util.Log
 import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.yoji0806.paperineconomics.ui.detail.DetailFragment
 import com.yoji0806.paperineconomics.ui.home.PaperGridAdapter
 
 private const val TAG = "[ApiService]"

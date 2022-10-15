@@ -17,6 +17,7 @@ import com.google.firebase.ktx.Firebase
 import com.yoji0806.paperineconomics.R
 import com.yoji0806.paperineconomics.databinding.FragmentDetailBinding
 import com.yoji0806.paperineconomics.network.ApiService
+import com.yoji0806.paperineconomics.ui.home.HomeFragmentDirections
 import com.yoji0806.paperineconomics.utility.JournalUtil
 
 private const val TAG = "DetailFragment"
@@ -31,6 +32,9 @@ class DetailFragment : Fragment() {
 
     private val apiService = ApiService()
     private val journalUtil = JournalUtil()
+
+    private lateinit var userId: String
+    private lateinit var paperId: String
 
 
     override fun onCreateView(
@@ -48,6 +52,18 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val navHeader = requireActivity()   //get reference
+            .findViewById<NavigationView>(R.id.nav_view).getHeaderView(0)
+        val hiddenTextView = navHeader.findViewById<TextView>(R.id.hidden_text_uid)
+        userId = hiddenTextView.text.toString()
+        paperId = journalUtil.getDoiFromUrl(args.paperUrl)
+
+        viewModel.checkBookmark(
+            userId = userId,
+            paperId = paperId,
+            fragment = this
+        )
+
         Log.d(TAG, "[debug] args: $args!")
         viewModel.paperTitle = args.paperTitle
         viewModel.paperAuthors = args.paperAuthors
@@ -56,21 +72,25 @@ class DetailFragment : Fragment() {
         viewModel.paperCategoryList = args.paperCategoryList.toList()
 
         binding.buttonBookmark.setOnClickListener{
-            val paperUrl = args.paperUrl
-            val navHeader = requireActivity()   //get reference
-                .findViewById<NavigationView>(R.id.nav_view).getHeaderView(0)
-            val hiddenTextView = navHeader.findViewById<TextView>(R.id.hidden_text_uid)
-            val userUid = hiddenTextView.text.toString()
             changeBookmark(
-                userId = userUid,
-                paperUrl = paperUrl
+                userId = userId,
+                paperId = paperId
             )
         }
     }
 
-    fun changeBookmark(userId: String, paperUrl: String) {
 
-        val paperId = journalUtil.getDoiFromUrl(paperUrl)
+    fun unBookmark() {
+        isBookmarked = false
+        binding.buttonBookmark.setImageResource(R.drawable.ic_baseline_bookmark_border_grey_40)
+    }
+
+    fun bookmark() {
+        isBookmarked = true
+        binding.buttonBookmark.setImageResource(R.drawable.ic_baseline_bookmark_added_24)
+    }
+
+    private fun changeBookmark(userId: String, paperId: String) {
 
         isBookmarked = !isBookmarked
         if (isBookmarked){

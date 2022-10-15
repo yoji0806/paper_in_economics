@@ -7,7 +7,8 @@ data class PaperInfo(
     val author_list: List<Author> = listOf(),
     val category_code_list: List<String> = listOf(),
     val title_str : String = "",
-    val url : String = ""
+    val url : String = "",
+    val bookmarked : Boolean = false
 ) {
     companion object {
         // define DillUtil
